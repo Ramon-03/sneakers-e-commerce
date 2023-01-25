@@ -10,13 +10,14 @@
       href="./images/favicon-32x32.png"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
     <title>Frontend Mentor | E-commerce product page</title>
   </head>
   <body>
     <!--======= Navigation Area =======-->
     <header>
       <nav class="navbar">
-        <div class="container">
+        <div class="nav-items">
           <div class="logo">sneakers</div>
           <ul class="list-items">
             <li class="item">Collections</li>
@@ -26,9 +27,13 @@
             <li class="item">Contact</li>
           </ul>
         </div>
-        <div class="nav-icons">
-          <img src="images/icon-cart.svg" alt="my cart" />
-          <img src="images/image-avatar.png" alt="my profile" />
+        <div class="nav-icons-area">
+          <img src="images/icon-cart.svg" alt="my cart" class="nav-cart" />
+          <img
+            src="images/image-avatar.png"
+            alt="my profile"
+            class="nav-profile"
+          />
         </div>
       </nav>
     </header>
@@ -85,7 +90,7 @@
       </div>
     </main>
     <!--======= Footer Area =======-->
-    <footer id="footer">
+    <footer>
       <div class="attribution">
         Challenge by
         <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
