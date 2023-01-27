@@ -1,16 +1,9 @@
-.attribution {
-  font-size: 11px;
-  text-align: center;
-}
-.attribution a {
-  color: hsl(228, 45%, 44%);
-}
-
 @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Poppins:wght@500&display=swap");
 
 :root {
-  --Color-primary: hsl(27, 92%, 61%);
+  --Color-primary: hsl(26, 100%, 55%);
   --Color-secondary: hsl(25, 100%, 94%);
+  --Color-tertiary: hsl(29, 82%, 58%);
   --Dark-blue: hsl(220, 13%, 13%);
   --Dark-grayish-blue: hsl(219, 9%, 45%);
   --Grayish-blue: hsl(220, 14%, 75%);
@@ -26,13 +19,18 @@
   font-family: "Kumbh Sans", sans-serif;
 }
 
+html {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
 body {
-  width: 80%;
+  width: 77%;
   margin: 0 auto;
 }
 
 .active {
-  border: 2px solid var(--Color-primary);
+  border: 2px solid var(--Color-tertiary);
   border-radius: 12px;
 }
 
@@ -51,9 +49,9 @@ body {
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: 1.9rem;
   font-weight: 700;
-  transform: scale(1.2, 1);
+  transform: scale(1.2, 0.95);
   letter-spacing: -2.6px;
   margin-right: 4rem;
   margin-left: 10px;
@@ -75,6 +73,7 @@ body {
 .item {
   list-style-type: none;
   letter-spacing: 0.6px;
+  transform: scaleY(0.95);
   transition: color 0.2s;
 }
 
@@ -85,7 +84,7 @@ body {
 .item:hover {
   cursor: pointer;
   color: var(--Dark-blue);
-  padding: 50px 0 47px 0;
+  padding: 53px 0 50px 0;
   border-bottom: 3px solid var(--Color-primary);
 }
 
@@ -100,7 +99,7 @@ body {
 .nav-cart {
   height: 1.3rem;
   width: 1.3rem;
-  margin-right: 3rem;
+  margin-right: 2.7rem;
 }
 
 .nav-profile {
@@ -114,14 +113,14 @@ body {
 }
 
 .nav-profile:hover {
-  outline: 2px solid var(--Color-primary);
+  outline: 2px solid var(--Color-tertiary);
   border-radius: 50%;
 }
 
 /* ----------------- Main area -------------------*/
 main {
   display: flex;
-  padding: 3rem;
+  padding: 30px 0;
 }
 
 .product-photos {
@@ -129,7 +128,7 @@ main {
   grid-template-columns: repeat(4, auto);
   grid-auto-rows: auto;
   text-align: center;
-  margin: 40px 0;
+  margin: 50px;
   gap: 30px;
 }
 
@@ -154,4 +153,135 @@ main {
 .img-thumb:hover {
   cursor: pointer;
   opacity: 0.5;
+}
+
+.description-area {
+  margin: 50px;
+  padding: 40px;
+  margin-right: 0;
+}
+
+.product-company {
+  color: var(--Color-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  margin: 20px 0;
+}
+
+.product-name {
+  font-size: 2.6rem;
+  margin-bottom: 2rem;
+}
+
+.product-desc {
+  margin: 30px 0;
+  line-height: 1.7rem;
+  color: var(--Dark-grayish-blue);
+}
+
+.pricetag1 {
+  font-size: 1.5rem;
+}
+
+.product-price {
+  font-size: 1.7rem;
+  font-weight: 700;
+  transform: scaleY(0.95);
+}
+
+.discount {
+  font-size: 1.1rem;
+  padding: 5px 8px;
+  margin: 0 10px;
+  border-radius: 8px;
+  vertical-align: 20%;
+  color: var(--Color-tertiary);
+  background-color: var(--Color-secondary);
+}
+
+.previous-price {
+  color: var(--Grayish-blue);
+  font-weight: 700;
+  margin: 10px 0;
+  text-decoration-line: line-through;
+  letter-spacing: 1px;
+}
+
+.add-items-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plus-minus {
+  width: 150px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  background-color: var(--Light-grayish-blue);
+  border-radius: 10px;
+}
+
+.number {
+  font-weight: 700;
+}
+
+.add,
+.remove {
+  padding: 15px;
+}
+
+.add:hover,
+.remove:hover {
+  cursor: pointer;
+}
+
+.add-to-cart {
+  width: 250px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--Color-primary);
+  border-radius: 8px;
+  margin-right: 25px;
+  color: var(--Light-grayish-blue);
+  box-sizing: content-box;
+  box-shadow: 0px 20px 15px 0px var(--Color-secondary);
+}
+
+.add-to-cart:hover {
+  cursor: pointer;
+}
+
+.cart {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 10px;
+  transform: scaleY(0.95);
+  filter: brightness(3);
+}
+
+.cart-desc {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* ----------------- Footer area -------------------*/
+
+.attribution {
+  font-size: 14px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+.attribution a:hover {
+  color: var(--Color-primary);
 }
