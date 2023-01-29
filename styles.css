@@ -48,6 +48,61 @@ body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+/*----- Hamburger Menu ------*/
+.hamburger-container {
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 3px;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.hamburger,
+.hamburger-container::before,
+.hamburger-container::after {
+  content: "";
+  width: 15px;
+  height: 3px;
+  background-color: var(--Dark-grayish-blue);
+  transition: all 0.25s;
+}
+
+.hamburger-container::before {
+  position: absolute;
+  top: 0;
+}
+
+.hamburger-container::after {
+  position: absolute;
+  bottom: 0;
+}
+
+.hamburger-container.is-active::before {
+  transform: translate(0px, 6px) rotate(45deg);
+}
+
+.hamburger-container.is-active::after {
+  transform: translate(0px, -6px) rotate(-45deg);
+}
+
+.hamburger-container.is-active .hamburger {
+  animation: slideout 0.5s forwards;
+}
+
+@keyframes slideout {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(-15px);
+    opacity: 0;
+  }
+}
+
 .logo {
   font-size: 1.9rem;
   font-weight: 700;
@@ -370,5 +425,11 @@ footer {
 
   .product-desc {
     font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .hamburger-container {
+    display: none;
   }
 }
