@@ -29,6 +29,7 @@ body {
   margin: 0 auto;
 }
 
+/* ----- Current thumbnail img ---*/
 .active {
   border: 2px solid var(--Color-tertiary);
   border-radius: 12px;
@@ -37,6 +38,8 @@ body {
 .opaque {
   opacity: 0.25;
 }
+
+/* ----- End of Current thumbnail img ---*/
 
 #dark {
   position: fixed;
@@ -49,7 +52,9 @@ body {
 }
 
 #dark.is-active {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ----------------- Navigation area -------------------*/
@@ -130,7 +135,6 @@ body {
 }
 
 .mobile-nav.is-active {
-  display: block;
   left: 0;
 }
 
@@ -502,6 +506,14 @@ footer {
 
 @media screen and (min-width: 1000px) {
   .hamburger-container {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: none;
+  }
+
+  #dark.is-active {
     display: none;
   }
 }
