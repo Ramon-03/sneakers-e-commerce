@@ -2,6 +2,25 @@ const menu = document.querySelector(".hamburger-container");
 const mobile_nav = document.querySelector(".mobile-nav");
 const dark = document.querySelector(".dark");
 const buttons = document.querySelectorAll("[data-slider-button]");
+const thumbnail = document.querySelectorAll(".thumbnail");
+const lightbox = document.querySelector(".lightbox");
+const close_button = document.querySelector(".close");
+
+thumbnail.forEach((thumbnail) => {
+  thumbnail.addEventListener("click", (e) => {
+    lightbox.classList.add("is-active");
+  });
+});
+
+lightbox.addEventListener("click", (e) => {
+  console.log(e.target);
+  if (e.target !== e.currentTarget) return;
+  lightbox.classList.remove("is-active");
+});
+
+close_button.addEventListener("click", (e) => {
+  lightbox.classList.remove("is-active");
+});
 
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
