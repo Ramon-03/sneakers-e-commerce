@@ -5,13 +5,25 @@ const buttons = document.querySelectorAll("[data-slider-button]");
 const thumbnail = document.querySelectorAll(".thumbnail");
 const lightbox = document.querySelector(".lightbox");
 const close_button = document.querySelector(".close");
-
+const lightbox_thumb = document.querySelectorAll(".lb-img-thumb");
+/* --------- lightbox activation --------- */
 thumbnail.forEach((thumbnail) => {
   thumbnail.addEventListener("click", (e) => {
     lightbox.classList.add("is-active");
+    const slides = document.querySelector("[data-slides]");
+    const activeSlide = slides.querySelector("[data-active]");
+    delete activeSlide.dataset.active;
+    slides.children[0].dataset.active = true;
+    const container = document
+      .querySelector(".thumb-1")
+      .closest(".lightbox-thumbnail");
+    const thumbnail = document.querySelector(".thumb-1");
+    thumbnail.classList.add("opaque");
+    container.classList.add("active");
   });
 });
 
+/* --------- lightbox deactivation --------- */
 lightbox.addEventListener("click", (e) => {
   console.log(e.target);
   if (e.target !== e.currentTarget) return;
@@ -22,6 +34,7 @@ close_button.addEventListener("click", (e) => {
   lightbox.classList.remove("is-active");
 });
 
+/* --------- lightbox image slider --------- */
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
     const offset = button.dataset.sliderButton === "next" ? 1 : -1;
@@ -38,9 +51,36 @@ buttons.forEach((button) => {
     delete activeSlide.dataset.active;
   });
 });
+/* --------- lightbox thumbnail active --------- */
+lightbox_thumb.forEach((thumbnail) => {
+  thumbnail.addEventListener("click", (e) => {
+    const slides = document.querySelector("[data-slides]");
+    const activeSlide = slides.querySelector("[data-active]");
+    if (e.target.classList.contains("thumb-1")) {
+      delete activeSlide.dataset.active;
+      slides.children[0].dataset.active = true;
+    } else if (e.target.classList.contains("thumb-2")) {
+      delete activeSlide.dataset.active;
+      slides.children[1].dataset.active = true;
+    } else if (e.target.classList.contains("thumb-3")) {
+      delete activeSlide.dataset.active;
+      slides.children[2].dataset.active = true;
+    } else {
+      delete activeSlide.dataset.active;
+      slides.children[3].dataset.active = true;
+    }
+  });
+});
 
-menu.addEventListener("click", function (e) {
+/* --------- mobile navigation toggle --------- */
+menu.addEventListener("click", (e) => {
   menu.classList.toggle("is-active");
   mobile_nav.classList.toggle("is-active");
   dark.classList.toggle("is-active");
+});
+
+dark.addEventListener("click", (e) => {
+  menu.classList.remove("is-active");
+  mobile_nav.classList.remove("is-active");
+  dark.classList.remove("is-active");
 });
