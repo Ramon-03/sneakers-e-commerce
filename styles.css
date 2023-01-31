@@ -525,7 +525,7 @@ footer {
 /*-------- Lightbox feature --------- */
 .lightbox {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: absolute;
   display: flex;
   justify-content: center;
@@ -544,11 +544,12 @@ footer {
   z-index: 999;
 }
 
+/*---------- lightbox close button ----------- */
 .close {
   width: 25px;
   height: 25px;
   position: absolute;
-  transform: translate(16rem, -22rem);
+  transform: translate(16rem, -22.8rem);
   cursor: pointer;
   z-index: 1000;
   margin: auto;
@@ -561,6 +562,7 @@ footer {
   width: 25px;
   height: 4px;
   background-color: var(--White);
+  transition: 0.2s;
 }
 
 .close::before {
@@ -571,12 +573,19 @@ footer {
   transform: translateY(11px) rotate(-45deg);
 }
 
+.close:hover::before,
+.close:hover::after {
+  background: var(--Color-primary);
+}
+
+/* --------- lightbox main images --------- */
 .slides {
-  width: 530px;
-  height: 530px;
+  width: 600px;
+  height: 650px;
   list-style-type: none;
   position: absolute;
-  top: 15%;
+  display: flex;
+  justify-content: center;
   border-radius: 15px;
 }
 
@@ -602,6 +611,7 @@ footer {
   outline: none;
 }
 
+/* -------previous and next buttons -------*/
 .slider-button {
   width: 3.5rem;
   height: 3.5rem;
@@ -618,18 +628,63 @@ footer {
   margin: auto;
 }
 
-.slider-button > img {
-  width: 0.8rem;
-  height: 1.1rem;
+.previous {
+  width: 20px;
+  height: 20px;
   position: relative;
 }
 
-.slider-button > img[alt="previous"] {
-  left: -2%;
+.previous::before,
+.previous::after {
+  content: "";
+  width: 12px;
+  height: 3px;
+  background-color: var(--Dark-blue);
+  position: absolute;
+  top: 65%;
+  left: 20%;
+  transition: 0.2s;
 }
 
-.slider-button > img[alt="next"] {
-  right: -2%;
+.previous::before {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.previous::after {
+  transform: translateY(-1px) rotate(45deg);
+}
+
+.slider-button.prev:hover .previous::before,
+.slider-button.prev:hover .previous::after,
+.slider-button.next:hover .next1::before,
+.slider-button.next:hover .next1::after {
+  background-color: var(--Color-primary);
+}
+
+.next1 {
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+.next1::before,
+.next1::after {
+  content: "";
+  width: 12px;
+  height: 3px;
+  background-color: var(--Dark-blue);
+  position: absolute;
+  top: 65%;
+  left: 20%;
+  transition: 0.2s;
+}
+
+.next1::before {
+  transform: translateY(-8px) rotate(45deg);
+}
+
+.next1::after {
+  transform: translateY(-1px) rotate(-45deg);
 }
 
 .slider-button.prev {
@@ -640,13 +695,15 @@ footer {
   transform: translate(16.6rem, -4rem);
 }
 
+/* ------- Lightbox thumbnails -------*/
 .lightbox-thumbnail-container {
   position: absolute;
-  bottom: 7rem;
+  transform: translateY(285px);
   width: 500px;
   height: 87px;
   display: flex;
   justify-content: space-evenly;
+  margin: auto;
 }
 
 .lightbox-thumbnail {
