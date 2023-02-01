@@ -6,6 +6,7 @@ const thumbnail = document.querySelectorAll(".img-thumb");
 const lightbox = document.querySelector(".lightbox");
 const close_button = document.querySelector(".close");
 const lightbox_thumb = document.querySelectorAll(".lb-img-thumb");
+const lb_thumb_parent = document.querySelectorAll(".lightbox-thumbnail");
 const main_image = document.querySelectorAll(".main-image");
 
 /* --------- main-image slider --------- */
@@ -54,8 +55,14 @@ main_image.forEach((image) => {
     lightbox.classList.add("is-active");
     const slides = document.querySelector("[data-slides]");
     const activeSlide = slides.querySelector("[data-active]");
+    const thumb_border = document.querySelector(".lb-active");
+    const thumb_opaque = document.querySelector(".lb-opaque");
     delete activeSlide.dataset.active;
     slides.children[0].dataset.active = true;
+    thumb_border.classList.remove("lb-active");
+    thumb_opaque.classList.remove("lb-opaque");
+    lightbox_thumb[0].classList.add("lb-opaque");
+    lb_thumb_parent[0].classList.add("lb-active");
   });
 });
 /* --------- lightbox deactivation --------- */
@@ -86,7 +93,7 @@ buttons.forEach((button) => {
     delete activeSlide.dataset.active;
   });
 });
-/* --------- lightbox thumbnail active --------- */
+/* --------- lightbox thumbnail slider --------- */
 lightbox_thumb.forEach((thumbnail) => {
   thumbnail.addEventListener("click", (e) => {
     const slides = document.querySelector("[data-slides]");
@@ -103,6 +110,26 @@ lightbox_thumb.forEach((thumbnail) => {
     } else {
       delete activeSlide.dataset.active;
       slides.children[3].dataset.active = true;
+    }
+  });
+});
+
+/* --------- lightbox thumbnail active --------- */
+lightbox_thumb.forEach((thumbnail) => {
+  thumbnail.addEventListener("click", (e) => {
+    const container = document.querySelector(".lightbox-thumbnail-container");
+    const currentBorder = e.target.closest(".lightbox-thumbnail");
+    const currentOpaque = document.querySelector(".lb-opaque");
+    if (
+      currentBorder.classList.contains("lb-active") &&
+      e.target.classList.contains("lb-opaque")
+    ) {
+      return;
+    } else {
+      currentOpaque.classList.remove("lb-opaque");
+      container.querySelector(".lb-active").classList.remove("lb-active");
+      currentBorder.classList.add("lb-active");
+      e.target.classList.add("lb-opaque");
     }
   });
 });

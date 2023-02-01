@@ -30,12 +30,14 @@ body {
 }
 
 /* ----- Current thumbnail img ---*/
-.active {
+.active,
+.lb-active {
   border: 2px solid var(--Color-tertiary);
   border-radius: 12px;
 }
 
-.opaque {
+.opaque,
+.lb-opaque {
   opacity: 0.25;
 }
 
@@ -571,7 +573,7 @@ footer {
   width: 25px;
   height: 25px;
   position: absolute;
-  transform: translate(16rem, -22.8rem);
+  transform: translate(16rem, -22rem);
   cursor: pointer;
   z-index: 1000;
   margin: auto;
