@@ -28,6 +28,26 @@ thumbnail.forEach((thumbnail) => {
     }
   });
 });
+
+/* --------- thumbnail active --------- */
+thumbnail.forEach((thumbnail) => {
+  thumbnail.addEventListener("click", (e) => {
+    const container = document.querySelector(".thumbnail-container");
+    const currentBorder = e.target.closest(".thumbnail");
+    const currentOpaque = document.querySelector(".opaque");
+    if (
+      currentBorder.classList.contains("active") &&
+      e.target.classList.contains("opaque")
+    ) {
+      return;
+    } else {
+      currentOpaque.classList.remove("opaque");
+      container.querySelector(".active").classList.remove("active");
+      currentBorder.classList.add("active");
+      e.target.classList.add("opaque");
+    }
+  });
+});
 /* --------- lightbox activation --------- */
 main_image.forEach((image) => {
   image.addEventListener("click", (e) => {
