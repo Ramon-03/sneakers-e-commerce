@@ -91,6 +91,15 @@ buttons.forEach((button) => {
 
     slides.children[newIndex].dataset.active = true;
     delete activeSlide.dataset.active;
+
+    let previous = newIndex - offset;
+    if (previous < 0) previous = lightbox_thumb.length - 1;
+    console.log(previous);
+    if (previous >= lightbox_thumb.length) previous = 0;
+    lightbox_thumb[previous].classList.remove("lb-opaque");
+    lb_thumb_parent[previous].classList.remove("lb-active");
+    lightbox_thumb[newIndex].classList.add("lb-opaque");
+    lb_thumb_parent[newIndex].classList.add("lb-active");
   });
 });
 /* --------- lightbox thumbnail slider --------- */
