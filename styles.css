@@ -326,6 +326,30 @@ body {
   align-items: center;
 }
 
+/*------- Cart Notification ------- */
+.cart-notif {
+  width: 19px;
+  height: 13px;
+  border-radius: 10px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--Light-grayish-blue);
+  background-color: var(--Color-primary);
+  position: absolute;
+  transform: translate(-5.4rem, -0.6rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.cart-notif.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*------- icons ------- */
 .nav-cart {
   height: 1.3rem;
   width: 1.3rem;

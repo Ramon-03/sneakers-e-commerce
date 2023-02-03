@@ -8,6 +8,7 @@ const close_button = document.querySelector(".close");
 const lightbox_thumb = document.querySelectorAll(".lb-img-thumb");
 const lb_thumb_parent = document.querySelectorAll(".lightbox-thumbnail");
 const main_image = document.querySelectorAll(".main-image");
+const cartNotif = document.querySelector(".cart-notif");
 
 /* --------- main-image slider --------- */
 thumbnail.forEach((thumbnail) => {
@@ -233,6 +234,8 @@ function addItemToCart(title, price, imageSrc, number, total) {
   <div class="checkout-btn">Checkout</div>`;
   cartItem.innerHTML = cartRowContents;
   cartContent.append(cartItem);
+  cartNotif.classList.add("active");
+  cartNotif.innerText = number;
   itemNumber.innerText = String(0);
   const trash = document.querySelector(".cart-btn-danger");
 
@@ -245,5 +248,7 @@ function removeCartItem() {
   newDefault.classList.add("default-text");
   const toRemove = document.querySelector(".cart-row");
   toRemove.remove();
+  cartNotif.classList.remove("active");
+  cartNotif.innerText = 0;
   document.querySelector(".cart-item").append(newDefault);
 }
