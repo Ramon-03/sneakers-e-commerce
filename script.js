@@ -8,7 +8,10 @@ const close_button = document.querySelector(".close");
 const lightbox_thumb = document.querySelectorAll(".lb-img-thumb");
 const lb_thumb_parent = document.querySelectorAll(".lightbox-thumbnail");
 const main_image = document.querySelectorAll(".main-image");
+const cartLayout = document.querySelector(".cart-layout");
 const cartNotif = document.querySelector(".cart-notif");
+const cartIcon = document.querySelector(".nav-cart");
+const navProfile = document.querySelector(".nav-profile");
 
 /* --------- main-image slider --------- */
 thumbnail.forEach((thumbnail) => {
@@ -157,6 +160,14 @@ dark.addEventListener("click", (e) => {
   dark.classList.remove("is-active");
 });
 
+/* --------- Nav Cart Toggle --------- */
+cartIcon.addEventListener("click", (e) => {
+  cartLayout.classList.toggle("active");
+});
+
+navProfile.addEventListener("click", (e) => {
+  cartLayout.classList.toggle("active");
+});
 /* --------- Add to cart event --------- */
 const plus = document.querySelector(".add");
 const minus = document.querySelector(".remove");
