@@ -155,3 +155,95 @@ dark.addEventListener("click", (e) => {
   mobile_nav.classList.remove("is-active");
   dark.classList.remove("is-active");
 });
+
+/* --------- Add to cart event --------- */
+const plus = document.querySelector(".add");
+const minus = document.querySelector(".remove");
+let itemNumber = document.querySelector(".number");
+const addToCartButton = document.querySelector(".add-to-cart");
+
+plus.addEventListener("click", (e) => {
+  let max = 10;
+  let updatedNumber = parseInt(itemNumber.innerText);
+  updatedNumber++;
+  itemNumber.innerText = updatedNumber;
+
+  if (itemNumber.innerText > max) {
+    alert("only 10 pairs can be ordered at once.");
+    itemNumber.innerText = max;
+  }
+});
+
+minus.addEventListener("click", (e) => {
+  let min = 0;
+  let updatedNumber = itemNumber.innerText;
+  updatedNumber--;
+  itemNumber.innerText = updatedNumber;
+
+  if (itemNumber.innerText < min) {
+    itemNumber.innerText = min;
+  }
+});
+
+addToCartButton.addEventListener("click", (e) => {
+  const title = document.querySelector(".product-name").innerText;
+  const price = document.querySelector(".product-price").innerText;
+  const imageSrc = document.querySelector(".thumb-1").src;
+  let number = itemNumber.innerText;
+  const priceTotal = parseFloat(price.replace("$", ""));
+  let total = priceTotal * parseInt(number);
+  if (number == 0) {
+    alert("please add some items first");
+    return;
+  } else {
+    addItemToCart(title, price, imageSrc, number, total);
+  }
+});
+
+function addItemToCart(title, price, imageSrc, number, total) {
+  const cartItem = document.createElement("div");
+  cartItem.classList.add("cart-row");
+  const cartContent = document.querySelector(".cart-item");
+  const defaultText = cartContent.querySelector(".default-text");
+  const presentItem = document.querySelector(".cart-item-title");
+
+  if (defaultText) defaultText.remove();
+  if (presentItem) {
+    itemNumber.innerText = String(0);
+    alert("Item already added to the cart!");
+    return;
+  }
+  const cartRowContents = `
+  <div class="cart-image-container">
+    <img
+      src="${imageSrc}"
+      alt="cart-img"
+      class="cart-image"
+    />
+  </div>
+  <div class="cart-item-info">
+    <p class="cart-item-title">${title}</p>
+    <p class="cart-item-price">${price}</p>
+    <span class="multiplier">x ${number}</span>
+    <span class="total">$${total.toFixed(2)}</span>
+  </div>
+  <div class="cart-btn-danger">
+    <img src="/images/icon-delete.svg" alt="trash" class="trash" />
+  </div>
+  <div class="checkout-btn">Checkout</div>`;
+  cartItem.innerHTML = cartRowContents;
+  cartContent.append(cartItem);
+  itemNumber.innerText = String(0);
+  const trash = document.querySelector(".cart-btn-danger");
+
+  trash.addEventListener("click", removeCartItem);
+}
+
+function removeCartItem() {
+  const newDefault = document.createElement("p");
+  newDefault.innerText = `Your cart is empty.`;
+  newDefault.classList.add("default-text");
+  const toRemove = document.querySelector(".cart-row");
+  toRemove.remove();
+  document.querySelector(".cart-item").append(newDefault);
+}
