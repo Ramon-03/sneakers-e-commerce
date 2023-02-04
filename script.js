@@ -11,7 +11,6 @@ const main_image = document.querySelectorAll(".main-image");
 const cartLayout = document.querySelector(".cart-layout");
 const cartNotif = document.querySelector(".cart-notif");
 const cartIcon = document.querySelector(".nav-cart");
-const navProfile = document.querySelector(".nav-profile");
 
 /* --------- main-image slider --------- */
 thumbnail.forEach((thumbnail) => {
@@ -56,6 +55,7 @@ thumbnail.forEach((thumbnail) => {
 /* --------- lightbox activation --------- */
 main_image.forEach((image) => {
   image.addEventListener("click", (e) => {
+    cartLayout.classList.remove("active");
     lightbox.classList.add("is-active");
     const slides = document.querySelector("[data-slides]");
     const activeSlide = slides.querySelector("[data-active]");
@@ -162,10 +162,6 @@ dark.addEventListener("click", (e) => {
 
 /* --------- Nav Cart Toggle --------- */
 cartIcon.addEventListener("click", (e) => {
-  cartLayout.classList.toggle("active");
-});
-
-navProfile.addEventListener("click", (e) => {
   cartLayout.classList.toggle("active");
 });
 /* --------- Add to cart event --------- */
