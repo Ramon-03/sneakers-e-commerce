@@ -71,7 +71,6 @@ main_image.forEach((image) => {
 });
 /* --------- lightbox deactivation --------- */
 lightbox.addEventListener("click", (e) => {
-  console.log(e.target);
   if (e.target !== e.currentTarget) return;
   lightbox.classList.remove("is-active");
 });

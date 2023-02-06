@@ -443,6 +443,54 @@ main {
   opacity: 0.5;
 }
 
+/* ------------ Mobile photos area -------------*/
+.mobile-photo-container {
+  width: 100%;
+  height: 300px;
+  display: none;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  width: 50px !important;
+  height: 50px !important;
+  background-color: var(--White);
+  border-radius: 50%;
+}
+
+.prev-mob::before,
+.prev-mob::after,
+.next-mob::before,
+.next-mob::after {
+  content: "";
+  width: 13px;
+  height: 4px;
+  background-color: var(--Dark-blue);
+  position: absolute;
+  top: 65%;
+  left: 20%;
+  transition: 0.2s;
+}
+
+.prev-mob {
+  transform: translateX(-1px);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: "" !important;
+}
 /* ----------------- Desc area -------------------*/
 
 .description-area {
@@ -693,33 +741,12 @@ footer {
   }
 
   /* -------- Photos Media Query --------*/
-  .main-slides {
-    max-width: 100%;
-  }
-
-  .lightbox {
-    overflow-x: hidden;
+  .mobile-photo-container {
+    display: block;
   }
 
   .product-photos {
-    max-width: 600px;
-    height: 300px;
-    margin: 0 auto;
-  }
-
-  .main-slides {
-    width: 100%;
-  }
-
-  .main-slide {
-    width: 100%;
-    height: 300px;
-    margin: auto;
-  }
-
-  .main-image {
-    border-radius: 0;
-    object-fit: cover;
+    display: none;
   }
 
   .thumbnail-container {
@@ -884,45 +911,17 @@ footer {
   margin: auto;
 }
 
-.previous {
+.previous,
+.next1,
+.prev-mob,
+.next-mob {
   width: 20px;
   height: 20px;
   position: relative;
 }
 
 .previous::before,
-.previous::after {
-  content: "";
-  width: 12px;
-  height: 3px;
-  background-color: var(--Dark-blue);
-  position: absolute;
-  top: 65%;
-  left: 20%;
-  transition: 0.2s;
-}
-
-.previous::before {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-.previous::after {
-  transform: translateY(-1px) rotate(45deg);
-}
-
-.slider-button.prev:hover .previous::before,
-.slider-button.prev:hover .previous::after,
-.slider-button.next:hover .next1::before,
-.slider-button.next:hover .next1::after {
-  background-color: var(--Color-primary);
-}
-
-.next1 {
-  width: 20px;
-  height: 20px;
-  position: relative;
-}
-
+.previous::after,
 .next1::before,
 .next1::after {
   content: "";
@@ -935,11 +934,30 @@ footer {
   transition: 0.2s;
 }
 
-.next1::before {
+.previous::before,
+.prev-mob::before {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.previous::after,
+.prev-mob::after {
+  transform: translateY(-1px) rotate(45deg);
+}
+
+.slider-button.prev:hover .previous::before,
+.slider-button.prev:hover .previous::after,
+.slider-button.next:hover .next1::before,
+.slider-button.next:hover .next1::after {
+  background-color: var(--Color-primary);
+}
+
+.next1::before,
+.next-mob::before {
   transform: translateY(-8px) rotate(45deg);
 }
 
-.next1::after {
+.next1::after,
+.next-mob::after {
   transform: translateY(-1px) rotate(-45deg);
 }
 

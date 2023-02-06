@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
     <title>Frontend Mentor | E-commerce product page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
   </head>
   <body>
     <!--======= Navigation Area =======-->
@@ -179,6 +183,36 @@
           </div>
         </div>
       </div>
+
+      <!--======= Mobile Photos Area =======-->
+      <div class="mobile-photo-container">
+        <!-- Slider main container -->
+        <div class="swiper">
+          <!-- Additional required wrapper -->
+          <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+              <img src="images/image-product-1.jpg" alt="image 1" />
+            </div>
+            <div class="swiper-slide">
+              <img src="images/image-product-2.jpg" alt="image 2" />
+            </div>
+            <div class="swiper-slide">
+              <img src="images/image-product-3.jpg" alt="image 3" />
+            </div>
+            <div class="swiper-slide">
+              <img src="images/image-product-4.jpg" alt="image 4" />
+            </div>
+          </div>
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev">
+            <div class="prev-mob"></div>
+          </div>
+          <div class="swiper-button-next">
+            <div class="next-mob"></div>
+          </div>
+        </div>
+      </div>
       <!--===== Description area =====-->
       <div class="description-area">
         <h4 class="product-company">Sneaker Company</h4>
@@ -214,5 +248,17 @@
         >. Coded by <a href="#">Ramon Ramos</a>.
       </div>
     </footer>
+    <!--======= Swiper JS =======-->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script>
+      const swiper = new Swiper(".swiper", {
+        loop: true,
+        // Navigation arrows
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
   </body>
 </html>
