@@ -258,3 +258,5 @@ function removeCartItem() {
   cartNotif.innerText = 0;
   document.querySelector(".cart-item").append(newDefault);
 }
+
+console.log(window.innerWidth);

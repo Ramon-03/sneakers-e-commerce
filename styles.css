@@ -662,7 +662,7 @@ footer {
   width: 25px;
   height: 25px;
   position: absolute;
-  transform: translate(16rem, -22rem);
+  transform: translate(16rem, -22.7rem);
   cursor: pointer;
   z-index: 1000;
   margin: auto;
@@ -968,6 +968,7 @@ footer {
   }
 
   .lightbox {
+    display: none;
     overflow: hidden;
   }
 
