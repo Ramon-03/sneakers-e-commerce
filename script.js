@@ -55,7 +55,6 @@ thumbnail.forEach((thumbnail) => {
 /* --------- lightbox activation --------- */
 main_image.forEach((image) => {
   image.addEventListener("click", (e) => {
-    cartLayout.classList.remove("active");
     lightbox.classList.add("is-active");
     const slides = document.querySelector("[data-slides]");
     const activeSlide = slides.querySelector("[data-active]");
@@ -163,6 +162,16 @@ dark.addEventListener("click", (e) => {
 cartIcon.addEventListener("click", (e) => {
   cartLayout.classList.toggle("active");
 });
+
+document.addEventListener("click", (e) => {
+  const targ = e.target;
+  const stay = document.querySelectorAll(".stay");
+  if (targ == cartIcon) return;
+  for (let i of stay) {
+    if (targ == i) return;
+  }
+  cartLayout.classList.remove("active");
+});
 /* --------- Add to cart event --------- */
 const plus = document.querySelector(".add");
 const minus = document.querySelector(".remove");
@@ -209,7 +218,7 @@ addToCartButton.addEventListener("click", (e) => {
 
 function addItemToCart(title, price, imageSrc, number, total) {
   const cartItem = document.createElement("div");
-  cartItem.classList.add("cart-row");
+  cartItem.classList.add("cart-row", "stay");
   const cartContent = document.querySelector(".cart-item");
   const defaultText = cartContent.querySelector(".default-text");
   const presentItem = document.querySelector(".cart-item-title");
@@ -225,14 +234,14 @@ function addItemToCart(title, price, imageSrc, number, total) {
     <img
       src="${imageSrc}"
       alt="cart-img"
-      class="cart-image"
+      class="cart-image stay"
     />
   </div>
-  <div class="cart-item-info">
-    <p class="cart-item-title">${title}</p>
-    <p class="cart-item-price">${price}</p>
-    <span class="multiplier">x ${number}</span>
-    <span class="total">$${total.toFixed(2)}</span>
+  <div class="cart-item-info stay">
+    <p class="cart-item-title stay">${title}</p>
+    <p class="cart-item-price stay">${price}</p>
+    <span class="multiplier stay">x ${number}</span>
+    <span class="total stay">$${total.toFixed(2)}</span>
   </div>
   <div class="cart-btn-danger">
     <i class="fas fa-trash-alt trash"></i>
@@ -244,8 +253,14 @@ function addItemToCart(title, price, imageSrc, number, total) {
   cartNotif.innerText = number;
   itemNumber.innerText = String(0);
   const trash = document.querySelector(".cart-btn-danger");
+  const checkoutBtn = document.querySelector(".checkout-btn");
 
   trash.addEventListener("click", removeCartItem);
+
+  checkoutBtn.addEventListener("click", (e) => {
+    alert("Thank you for your purchase!");
+    removeCartItem();
+  });
 }
 
 function removeCartItem() {
@@ -258,5 +273,3 @@ function removeCartItem() {
   cartNotif.innerText = 0;
   document.querySelector(".cart-item").append(newDefault);
 }
-
-console.log(window.innerWidth);
