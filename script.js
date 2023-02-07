@@ -235,7 +235,7 @@ function addItemToCart(title, price, imageSrc, number, total) {
     <span class="total">$${total.toFixed(2)}</span>
   </div>
   <div class="cart-btn-danger">
-    <img src="/images/icon-delete.svg" alt="trash" class="trash" />
+    <i class="fas fa-trash-alt trash"></i>
   </div>
   <div class="checkout-btn">Checkout</div>`;
   cartItem.innerHTML = cartRowContents;
