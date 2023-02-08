@@ -287,10 +287,11 @@ body {
 /*----- End of Mobile Menu ------*/
 
 .logo {
-  font-size: 1.9rem;
+  font-family: Poppins;
+  font-size: 1.6rem;
   font-weight: 700;
   transform: scale(1.2, 0.95);
-  letter-spacing: -2.6px;
+  letter-spacing: -0.5px;
   margin-right: 4rem;
   margin-left: 10px;
 }
