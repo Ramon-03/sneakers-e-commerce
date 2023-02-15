@@ -147,9 +147,11 @@ lightbox_thumb.forEach((thumbnail) => {
 
 /* --------- mobile navigation toggle --------- */
 menu.addEventListener("click", (e) => {
+  const body = document.querySelector("body");
   menu.classList.toggle("is-active");
   mobile_nav.classList.toggle("is-active");
   dark.classList.toggle("is-active");
+  body.style.overflow = "hidden";
 });
 
 dark.addEventListener("click", (e) => {
