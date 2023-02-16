@@ -11,6 +11,7 @@ const main_image = document.querySelectorAll(".main-image");
 const cartLayout = document.querySelector(".cart-layout");
 const cartNotif = document.querySelector(".cart-notif");
 const cartIcon = document.querySelector(".nav-cart");
+const body = document.querySelector("body");
 
 /* --------- main-image slider --------- */
 thumbnail.forEach((thumbnail) => {
@@ -147,17 +148,17 @@ lightbox_thumb.forEach((thumbnail) => {
 
 /* --------- mobile navigation toggle --------- */
 menu.addEventListener("click", (e) => {
-  const body = document.querySelector("body");
   menu.classList.toggle("is-active");
   mobile_nav.classList.toggle("is-active");
   dark.classList.toggle("is-active");
-  body.style.overflow = "hidden";
+  body.classList.toggle("toFixed");
 });
 
 dark.addEventListener("click", (e) => {
   menu.classList.remove("is-active");
   mobile_nav.classList.remove("is-active");
   dark.classList.remove("is-active");
+  body.classList.remove("toFixed");
 });
 
 /* --------- Nav Cart Toggle --------- */
